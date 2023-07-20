@@ -216,7 +216,7 @@ void command4(char* algorithm1, char* algorithm2, char* input_file)
     delete [] tmp;
     tmp=copyArray(a,n);
     measureCount(algorithm2, tmp, n, countCompare2);
-    cout<<"here";
+    
     delete [] tmp;
     tmp=copyArray(a,n);
     double time1 = measureAlgorithm(algorithm1, tmp, n);
