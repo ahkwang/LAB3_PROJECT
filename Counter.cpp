@@ -39,7 +39,16 @@ void  measureInsertionSort(int* a, int n, long long & countCompare)
 
 void  measureBubbleSort(int* a, int n, long long& countCompare)
 {
-	return;
+    for (int i = 1;(++countCompare, i < n); i++)
+    {
+        for (int j = n - 1; (++countCompare, j >= i); j--)
+        {
+            if (++countCompare && a[j] < a[j - 1])
+            {
+                swap(a[j], a[j - 1]);
+            }
+        }
+    }
 }
 
 void  measureShakerSort(int* a, int n, long long& countCompare)
@@ -120,7 +129,34 @@ void countStartMergeSort(int *a, int l, int r, long long &countCompare)
 }
 
 
-void  measureQuickSort(int* a, int n, long long& countCompare){}
+void  measureQuickSort(int* a, int n, long long& countCompare)
+{
+    measureQuickSort_function(a, 0, n - 1, countCompare);
+}
+void measureQuickSort_function(int* a, int left, int right,long long& countCompare)
+{
+    if (++countCompare && left < right)
+    {
+        int pivot = a[left];
+        int i = left;
+        int j = right + 1;
+        do {
+            do {
+                i++;
+            } while (++countCompare && a[i] < pivot);
+            do {
+                j--;
+            } while (++countCompare && a[j] > pivot);
+            swap(a[i], a[j]);
+        } while (++countCompare && i < j);
+
+        swap(a[i], a[j]);
+        swap(a[left], a[j]);
+        //
+        measureQuickSort_function(a, left, j - 1, countCompare);
+        measureQuickSort_function(a, j + 1, right, countCompare);
+    }
+}
 
 void  measureCountingSort(int* a, int n, long long& countCompare)
 {
