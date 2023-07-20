@@ -55,7 +55,46 @@ void  measureMergeSort(int* a, int n, long long& countCompare){}
 
 void  measureQuickSort(int* a, int n, long long& countCompare){}
 
-void  measureCountingSort(int* a, int n, long long& countCompare){}
+void  measureCountingSort(int* a, int n, long long& countCompare)
+{
+	countCompare = 0;
+
+	int maxValue = a[0];
+
+	for (int i = 0; ++countCompare, i < n; i++)
+		if (++countCompare && maxValue < a[i])
+			maxValue = a[i];
+
+	int minValue = a[0];
+
+	for (int i = 0; ++countCompare && i < n; i++)
+		if (++countCompare && minValue > a[i])
+			minValue = a[i];
+
+	int maxNum = maxValue - minValue + 1;
+	int* countArr = new int[maxNum];
+	int* sortedArr = new int[n];
+
+	for (int i = 0; ++countCompare, i < maxNum; i++)
+		countArr[i] = 0;
+
+	for (int i = 0; ++countCompare, i < n; i++)
+		sortedArr[i] = 0;
+
+	for (int i = 0; ++countCompare, i < n; i++)
+		countArr[a[i] - minValue]++;
+	for (int i = 1; ++countCompare, i < maxNum; i++)
+		countArr[i] += countArr[i - 1];
+
+	for (int i = 0; ++countCompare, i < n; i++)
+	{
+		sortedArr[countArr[a[i] - minValue] - 1] = a[i];
+		countArr[a[i] - minValue]--;
+	}
+	for (int i = 0; ++countCompare, i < n; i++)
+		a[i] = sortedArr[i];
+
+}
 
 void  measureRadixSort(int* a, int n, long long& countCompare){}
 
