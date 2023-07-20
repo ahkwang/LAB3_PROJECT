@@ -3,6 +3,7 @@
 double measureAlgorithm(char* algorithm, int* a, int n);
 bool checkValidAlgorithm(char* algorithm);
 int convertDataType(char* inputOrder);
+int *copyArray(int *a,int n);
 //measure number of count;
 void measureCount(char* algorithm, int* a, int n, long long& countCompare);
 

@@ -76,7 +76,9 @@ void mergeSort(int *a,int n)
 void mergeArray(int *a,int l,int r,int mid)
 {
     int t1=mid-l+1,t2=r-mid;
-    int left_array[t1],right_array[t2];
+    int* left_array= new int[t1];
+    int* right_array=new int[t2];
+    
 
     for(int i=l;i<=mid;i++)left_array[i-l]=a[i];
     for(int i=mid+1;i<=r;i++)right_array[i-mid-1]=a[i];
@@ -95,6 +97,8 @@ void mergeArray(int *a,int l,int r,int mid)
     while(count1<t1)a[tmp++]=left_array[count1++];
     while(count2<t2)a[tmp++]=right_array[count2++];
 
+    delete [] left_array;
+    delete [] right_array;
 
 }
 void startMergeSort(int *a, int l, int r)
@@ -141,7 +145,8 @@ int digit(int x,int k)
 }
 void countingSortForBase_k(int *a,int n,int k)
 {
-    int f[10],b[n];
+    int f[10];
+    int *b=new int[n];
     for(int i=0;i<10;i++) f[i]=0;
     for(int i=0;i<n;i++) f[digit(a[i],k)]++;
     for(int i=1;i<10;i++)f[i]+=f[i-1];
@@ -153,6 +158,7 @@ void countingSortForBase_k(int *a,int n,int k)
     }
 
     for(int i=0;i<n;i++)a[i]=b[i];
+    delete []b;
 
 }
 
