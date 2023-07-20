@@ -5,7 +5,8 @@ bool checkValidAlgorithm(char* algorithm);
 int convertDataType(char* inputOrder);
 int convertDataTypeOutputParam(char* outputParam);
 int checkFile(char* inputFile);
-//measure number of count;
+void convertStringOrder(int dataType);
+
 void measureCount(char* algorithm, int* a, int n, long long& countCompare);
 
 void command1(char* algorithm, char* inputFile, char* outputPara);
