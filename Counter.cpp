@@ -88,7 +88,8 @@ void measureMergeSort(int *a,int n , long long &countCompare)
 void countMergeArray(int *a,int l,int r,int mid, long long &countCompare)
 {
     int t1=mid-l+1,t2=r-mid;
-    int left_array[t1],right_array[t2];
+    int* left_array = new int[t1];
+    int* right_array = new int[t2];
 
     for(int i=l; ++countCompare , i<=mid;i++)left_array[i-l]=a[i];
     for(int i=mid+1;++countCompare, i<=r;i++)right_array[i-mid-1]=a[i];
