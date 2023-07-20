@@ -189,6 +189,134 @@ void measureCount(char* algorithm, int* a, int n, long long & countCompare)
                                         }
 }
 
+int checkFile(char* inputFile)
+{
+    fstream fs;
+    fs.open(inputFile, ios::in);
+    
+    if (!fs.is_open())
+    {
+        return 0;
+    }
+    fs.close();
+    return 1;
+}
+
+void copyArr(int*& dest, int* source, int n)
+{
+    dest = new int[n];
+
+    for (int i = 0; i < n; i++)
+        dest[i] = source[i];
+
+}
+
+void command1(char* algorithm, char* inputFile, char* outputPara)
+{
+    if (!checkValidAlgorithm(algorithm) || !checkFile(inputFile) || convertDataTypeOutputParam(outputPara) == 3)
+    {
+        cout << ("Error: unknown command line format!\n");
+        return;
+    }
+    int* a;
+    int* b;
+    int n;
+    long long countCompare = 0;
+
+    inputData(inputFile, a, n);
+    copyArr(b, a, n);
+
+    cout << "ALGORITHM MODE";
+    cout << "\nAlgorithm: " << algorithm;
+    cout << "\nInput file: " << inputFile;
+    cout << "\nInput size: " << n;
+    cout << "\n--------------------------";
+    if (convertDataTypeOutputParam(outputPara) == 0)
+    {
+        cout << "\nRunning time: " << measureAlgorithm(algorithm, a, n) << " ms";
+    }
+    else if (convertDataTypeOutputParam(outputPara) == 1)
+    {
+        measureCount(algorithm, a, n, countCompare);
+        cout << "\nComparisions: " << countCompare;
+    }
+    else
+    {
+        cout << "\nRunning time: " << measureAlgorithm(algorithm, a, n) << " ms";
+        
+        measureCount(algorithm, b, n, countCompare);
+        cout << "\nComparisions: " << countCompare;
+    }
+    
+    delete a;
+    delete b;
+}
+
+void convertStringOrder(int dataType)
+{
+    if (dataType == 0)
+    {
+        cout << "randomized data";
+        return;
+    }
+    if (dataType == 1)
+    {
+        cout << "nearly sorted data";
+        return;
+    }
+    if (dataType == 2)
+    {
+        cout << "sorted data";
+        return;
+    }
+    cout << "reverse sorted data";
+}
+
+void command2(char* algorithm, char* inputSize, char* order, char* outputPara)
+{
+    if (!checkValidAlgorithm(algorithm) || convertDataType(order) == 4 || convertDataTypeOutputParam(outputPara) == 3 || atoll(inputSize) < 0 || atoll(inputSize) > 1e9)
+    {
+        cout << ("Error: unknown command line format!\n");
+        return;
+    }
+
+    int n = atoi(inputSize);
+    int* a = new int[n];
+    int* b;
+    long long countCompare = 0;
+    generateData(n, a, convertDataType(order));
+    
+    copyArr(b, a, n);
+
+    cout << "ALGORITHM MODE";
+    cout << "\nAlgorithm: " << algorithm;
+    cout << "\nInput size: " << n;
+    cout << "\nInput order: "; 
+    convertStringOrder(convertDataType(order));
+    /*convertStringOrder(convertDataTypeOutputParam(outputPara));*/
+    cout << "\n--------------------------";
+    if (convertDataTypeOutputParam(outputPara) == 0)
+    {
+        cout << "\nRunning time: " << measureAlgorithm(algorithm, a, n) << " ms";
+    }
+    else if (convertDataTypeOutputParam(outputPara) == 1)
+    {
+        measureCount(algorithm, a, n, countCompare);
+        cout << "\nComparisions: " << countCompare;
+    }
+    else
+    {
+        cout << "\nRunning time: " << measureAlgorithm(algorithm, a, n) << " ms";
+
+        measureCount(algorithm, b, n, countCompare);
+        cout << "\nComparisions: " << countCompare;
+    }
+
+    delete a;
+    delete b;
+
+}
+
 int *copyArray(int *a,int n)
 {
     int *tmp=new int[n];
@@ -196,12 +324,16 @@ int *copyArray(int *a,int n)
     return tmp;
 }
 
+
 void command4(char* algorithm1, char* algorithm2, char* input_file)
 {
     //check algo
     //cout<<algorithm1<<endl;
-    if (!checkValidAlgorithm(algorithm1)) return;
-    if (!checkValidAlgorithm(algorithm2)) return;
+    if (!checkValidAlgorithm(algorithm1) || !checkValidAlgorithm(algorithm2))
+    {
+        cout << ("Error: unknown command line format!\n");
+        return;
+    }
     
     int n;
     ifstream file;
