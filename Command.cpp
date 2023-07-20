@@ -464,3 +464,59 @@ void writeFile(char* fileName, char* name_order, int* a, int n)
 		input << a[i] << " ";
 	}
 }
+
+void command5(char* algorithm1, char* algorithm2, char* input_size, char* input_order)
+{
+	if (!checkValidAlgorithm(algorithm1) || !checkValidAlgorithm(algorithm2))
+	{
+		cerr << "Error: Invalid sort algorithm." << endl;
+		return;
+	}
+
+	int n = stoi(input_size);
+	int dataType = -1;
+	dataType = convertDataType(input_order);
+
+	if (dataType < 0)
+	{
+		cerr << "Error: Invalid data type." << endl;
+		return;
+	}
+
+	int* array1 = new int[n];
+	int* array2 = new int[n];
+	generateData(n, array1, dataType);
+	copy(array1, array1 + n, array2); // copy array1 to array2
+
+	double time1 = -1, time2 = -1;
+	long long count_compare1 = 0, count_compare2 = 0;
+
+	int* temp1 = new int[n];
+	int* temp2 = new int[n];
+	copy(array1, array1 + n, temp1);
+	copy(array1, array1 + n, temp2);
+
+	// count comparisions
+	measureCount(algorithm1, array1, n, count_compare1);
+	measureCount(algorithm2, array2, n, count_compare2);
+
+	// run time
+	time1 = measureAlgorithm(algorithm1, temp1, n);
+	time2 = measureAlgorithm(algorithm2, temp2, n);
+
+	// PRINT DATA
+	cout << "COMPARE MODE" << endl;
+	cout << "Algorithm: " << algorithm1 << " | " << algorithm2 << endl;
+	cout << "Input size: " << n << endl;
+	cout << "Input order: ";
+	convertStringOrder(dataType);
+	cout << "------------------------------------------------------\n";
+	cout << setprecision(9);
+	cout << "Running time: " << time1 << " | " << time2 << endl;
+	cout << "Comparisions: " << count_compare1 << " | " << count_compare2 << endl;
+
+	delete[] temp1;
+	delete[] temp2;
+	delete[] array1;
+	delete[] array2;
+}
