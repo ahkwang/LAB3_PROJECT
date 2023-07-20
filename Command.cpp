@@ -1,5 +1,16 @@
 #include "mainHeader.h"
 
+int convertDataTypeOutputParam(char* outputParam)
+{
+    if (strcmp(outputParam, "-time") == 0)
+        return 0;
+    if (strcmp(outputParam, "-comp") == 0)
+        return 1;
+    if (strcmp(outputParam, "-both") == 0)
+        return 2;
+    return 3;
+}
+
 double measureAlgorithm(char* algorithm, int* a, int n)
 {
     clock_t t1, t2;
