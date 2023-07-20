@@ -1,5 +1,16 @@
 #include "mainHeader.h"
 
+int convertDataTypeOutputParam(char* outputParam)
+{
+    if (strcmp(outputParam, "-time") == 0)
+        return 0;
+    if (strcmp(outputParam, "-comp") == 0)
+        return 1;
+    if (strcmp(outputParam, "-both") == 0)
+        return 2;
+    return 3;
+}
+
 double measureAlgorithm(char* algorithm, int* a, int n)
 {
     clock_t t1, t2;
@@ -233,6 +244,6 @@ void command4(char* algorithm1, char* algorithm2, char* input_file)
     cout << "-------------------------\n";
     cout << "Running time: " << fixed << setprecision(5) << time1 << " | " << time2 << endl;
     cout << "Comparisions: " << setprecision(0) << countCompare1 << " | " << countCompare2 << endl;
-  //  for (int i = 0; i < n; i++)cout << a[i] << " ";
-    delete []a;
+
+    delete a;
 }
