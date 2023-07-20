@@ -1,21 +1,23 @@
 #pragma once
 
-#include <iostream>
-#include <fstream>
-#include <cmath>
-#include <algorithm>
-#include <cstring>
-#include <string>
-#include <time.h>
+void  measureSelectionSort(int* a, int n, long long& countCompare);
 
-long long measureselectionSort(int a[], int n);
-long long measureInsertionSort(int a[], int n);
-long long measureBubbleSort(int a[], int n);
-long long measureShakerSort(int a[], int n);
-long long measureShellSort(int a[], int n);
-long long measureHeapSort(int a[], int n);
-long long measureMergeSort(int a[], int n);
-long long measureQuickSort(int a[], int n);
-long long measureCoutingSort(int a[], int n);
-long long measureRadixSort(int a[], int n);
-long long measureFlashSort(int a[], int n);
+void  measureInsertionSort(int* a, int n, long long& countCompare);
+
+void  measureBubbleSort(int* a, int n, long long& countCompare);
+
+void  measureShakerSort(int* a, int n, long long& countCompare);
+
+void  measureShellSort(int* a, int n, long long& countCompare);
+
+void  measureHeapSort(int* a, int n, long long& countCompare);
+
+void  measureMergeSort(int* a, int n, long long& countCompare);
+
+void  measureQuickSort(int* a, int n, long long& countCompare);
+
+void  measureCountingSort(int* a, int n, long long& countCompare);
+
+void  measureRadixSort(int* a, int n, long long& countCompare);
+
+void measureFlashSort(int* a, int n, long long& countCompare);
