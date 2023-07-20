@@ -192,7 +192,8 @@ int digit2(int x,int k, long long &countCompare)
 }
 void countCountingSortForBase_k(int *a,int n,int k,long long &countCompare)
 {
-    int f[10],b[n];
+    int f[10];
+    int *b = new int[n];
     for(int i=0;++countCompare,i<10;i++) f[i]=0;
     for(int i=0;++countCompare,i<n;i++) f[digit2(a[i],k,countCompare)]++;
     for(int i=1;++countCompare,i<10;i++)f[i]+=f[i-1];

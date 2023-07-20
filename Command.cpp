@@ -215,6 +215,6 @@ void command4(char* algorithm1, char* algorithm2, char* input_file)
     cout << "-------------------------\n";
     cout << "Running time: " << fixed << setprecision(5) << time1 << " | " << time2 << endl;
     cout << "Comparisions: " << setprecision(0) << countCompare1 << " | " << countCompare2 << endl;
-    for (int i = 0; i < n; i++)cout << a[i] << " ";
+    
     delete[]a;
 }
