@@ -3,10 +3,10 @@
 //test main
 int main(int argc, char* argv[])
 {
-    char algorithm1[] = "selection-sort";
-    char algorithm2[] = "counting-sort";
+    char algorithm1[] = "counting-sort";
+    char algorithm2[] = "radix-sort";
     char hi[] = "input.txt";
-    int n = 10000;
+    int n = 100000;
     int* a = new int[n];
     generateData(n, a, 1);
     outputData(hi, a, n);
