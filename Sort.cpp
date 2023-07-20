@@ -33,7 +33,19 @@ void insertionSort(int* a, int n)
 	}
 }
 
-void bubbleSort(int* a, int n) {}
+void bubbleSort(int* a, int n)
+{
+    for (int i = 1; i < n; i++)
+    {
+        for (int j = n - 1; j >= i; j--)
+        {
+            if (a[j] < a[j - 1])
+            {
+                swap(a[j], a[j - 1]);
+            }
+        }
+    }
+}
 
 void shakerSort(int* a, int n){}
 
@@ -113,7 +125,33 @@ void startMergeSort(int *a, int l, int r)
 }
 
 
-void quickSort(int* a, int n){}
+void quickSort(int* a, int n)
+{
+    quickSort_function(a, 0, n - 1);
+}
+void quickSort_function(int* a, int left, int right)
+{
+    if (left < right)
+    {
+        int pivot = a[left];
+        int i = left;
+        int j = right + 1;
+        do {
+            do {
+                i++;
+            } while (a[i] < pivot);
+            do {
+                j--;
+            } while (a[j] > pivot);
+            swap(a[i], a[j]);
+        } while (i < j);
+        swap(a[i], a[j]);
+        swap(a[left], a[j]);
+        //
+        quickSort_function(a, left, j - 1);
+        quickSort_function(a, j + 1, right);
+    }
+}
 
 void countingSort(int* a, int n)
 {
