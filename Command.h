@@ -4,6 +4,7 @@ double measureAlgorithm(char* algorithm, int* a, int n);
 bool checkValidAlgorithm(char* algorithm);
 int convertDataType(char* inputOrder);
 int convertDataTypeOutputParam(char* outputParam);
+void printDataType(int type);
 //measure number of count;
 void measureCount(char* algorithm, int* a, int n, long long& countCompare);
 
@@ -15,4 +16,4 @@ void command3(char*, char*, char*);
 
 void command4(char* algorithm1, char* algorithm2, char* input_file);
 
-void command5(char*, char*, char*, char*);
+void command5(char* algorithm1, char* algorithm2, char* input_size, char* input_order);

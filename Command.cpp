@@ -1,6 +1,6 @@
 #include "mainHeader.h"
 
-int convertDataTypeOutputParam(char* outputParam)
+int convertDataTypeOutputParam(char *outputParam)
 {
     if (strcmp(outputParam, "-time") == 0)
         return 0;
@@ -11,7 +11,7 @@ int convertDataTypeOutputParam(char* outputParam)
     return 3;
 }
 
-double measureAlgorithm(char* algorithm, int* a, int n)
+double measureAlgorithm(char *algorithm, int *a, int n)
 {
     clock_t t1, t2;
     if (strcmp(algorithm, "selection-sort") == 0)
@@ -20,105 +20,98 @@ double measureAlgorithm(char* algorithm, int* a, int n)
         selectionSort(a, n);
         t2 = clock();
     }
-    else
-        if (strcmp(algorithm, "insertion-sort") == 0)
-        {
-            t1 = clock();
-            insertionSort(a, n);
-            t2 = clock();
-        }
-        else
-            if (strcmp(algorithm, "bubble-sort") == 0)
-            {
-                t1 = clock();
-                bubbleSort(a, n);
-                t2 = clock();
-            }
-            else
-                if (strcmp(algorithm, "shaker-sort") == 0)
-                {
-                    t1 = clock();
-                    shakerSort(a, n);
-                    t2 = clock();
-                }
-                else
-                    if (strcmp(algorithm, "shell-sort") == 0)
-                    {
-                        t1 = clock();
-                        shellSort(a, n);
-                        t2 = clock();
-                    }
-                    else
-                        if (strcmp(algorithm, "heap-sort") == 0)
-                        {
-                            t1 = clock();
-                            heapSort(a, n);
-                            t2 = clock();
-                        }
-                        else
-                            if (strcmp(algorithm, "merge-sort") == 0)
-                            {
-                                t1 = clock();
-                                mergeSort(a, n);
-                                t2 = clock();
-                            }
-                            else
-                                if (strcmp(algorithm, "quick-sort") == 0)
-                                {
-                                    t1 = clock();
-                                    quickSort(a, n);
-                                    t2 = clock();
-                                }
-                                else
-                                    if (strcmp(algorithm, "counting-sort") == 0)
-                                    {
-                                        t1 = clock();
-                                        countingSort(a, n);
-                                        t2 = clock();
-                                    }
-                                    else
-                                        if (strcmp(algorithm, "radix-sort") == 0)
-                                        {
-                                            t1 = clock();
-                                            radixSort(a, n);
-                                            t2 = clock();
-                                        }
-                                        else//flash sort
-                                        {
-                                            t1 = clock();
-                                            flashSort(a, n);
-                                            t2 = clock();
-                                        }
+    else if (strcmp(algorithm, "insertion-sort") == 0)
+    {
+        t1 = clock();
+        insertionSort(a, n);
+        t2 = clock();
+    }
+    else if (strcmp(algorithm, "bubble-sort") == 0)
+    {
+        t1 = clock();
+        bubbleSort(a, n);
+        t2 = clock();
+    }
+    else if (strcmp(algorithm, "shaker-sort") == 0)
+    {
+        t1 = clock();
+        shakerSort(a, n);
+        t2 = clock();
+    }
+    else if (strcmp(algorithm, "shell-sort") == 0)
+    {
+        t1 = clock();
+        shellSort(a, n);
+        t2 = clock();
+    }
+    else if (strcmp(algorithm, "heap-sort") == 0)
+    {
+        t1 = clock();
+        heapSort(a, n);
+        t2 = clock();
+    }
+    else if (strcmp(algorithm, "merge-sort") == 0)
+    {
+        t1 = clock();
+        mergeSort(a, n);
+        t2 = clock();
+    }
+    else if (strcmp(algorithm, "quick-sort") == 0)
+    {
+        t1 = clock();
+        quickSort(a, n);
+        t2 = clock();
+    }
+    else if (strcmp(algorithm, "counting-sort") == 0)
+    {
+        t1 = clock();
+        countingSort(a, n);
+        t2 = clock();
+    }
+    else if (strcmp(algorithm, "radix-sort") == 0)
+    {
+        t1 = clock();
+        radixSort(a, n);
+        t2 = clock();
+    }
+    else // flash sort
+    {
+        t1 = clock();
+        flashSort(a, n);
+        t2 = clock();
+    }
     return 1.0 * double(t2 - t1) / double(CLOCKS_PER_SEC);
 }
 
-bool checkValidAlgorithm(char* algorithm)
+bool checkValidAlgorithm(char *algorithm)
 {
-    if (strcmp(algorithm, "selection-sort") == 0)return true;
+    if (strcmp(algorithm, "selection-sort") == 0)
+        return true;
+    else if (strcmp(algorithm, "insertion-sort") == 0)
+        return true;
+    else if (strcmp(algorithm, "bubble-sort") == 0)
+        return true;
+    else if (strcmp(algorithm, "shaker-sort") == 0)
+        return true;
+    else if (strcmp(algorithm, "shell-sort") == 0)
+        return true;
+    else if (strcmp(algorithm, "heap-sort") == 0)
+        return true;
+    else if (strcmp(algorithm, "merge-sort") == 0)
+        return true;
+    else if (strcmp(algorithm, "quick-sort") == 0)
+        return true;
+    else if (strcmp(algorithm, "counting-sort") == 0)
+        return true;
+    else if (strcmp(algorithm, "radix-sort") == 0)
+        return true;
+    else if (strcmp(algorithm, "flash-sort") == 0)
+        return true;
     else
-        if (strcmp(algorithm, "insertion-sort") == 0)return true;
-        else
-            if (strcmp(algorithm, "bubble-sort") == 0)return true;
-            else
-                if (strcmp(algorithm, "shaker-sort") == 0)return true;
-                else
-                    if (strcmp(algorithm, "shell-sort") == 0)return true;
-                    else
-                        if (strcmp(algorithm, "heap-sort") == 0)return true;
-                        else
-                            if (strcmp(algorithm, "merge-sort") == 0)return true;
-                            else
-                                if (strcmp(algorithm, "quick-sort") == 0)return true;
-                                else
-                                    if (strcmp(algorithm, "counting-sort") == 0)return true;
-                                    else
-                                        if (strcmp(algorithm, "radix-sort") == 0)return true;
-                                        else
-                                            if (strcmp(algorithm, "flash-sort") == 0)return true;
-                                            else return false;
+        return false;
 }
 
-int convertDataType(char* inputOrder)
+int convertDataType(char *inputOrder)
 {
     if (strcmp(inputOrder, "-rand") == 0)
         return 0;
@@ -131,71 +124,64 @@ int convertDataType(char* inputOrder)
     return 4;
 }
 
-void measureCount(char* algorithm, int* a, int n, long long & countCompare)
+void measureCount(char *algorithm, int *a, int n, long long &countCompare)
 {
     countCompare = 0;
     if (strcmp(algorithm, "selection-sort") == 0)
     {
         measureSelectionSort(a, n, countCompare);
     }
-    else
-        if (strcmp(algorithm, "insertion-sort") == 0)
-        {
-            measureInsertionSort(a, n, countCompare);
-        }
-        else
-            if (strcmp(algorithm, "bubble-sort") == 0)
-            {
-                measureBubbleSort(a, n, countCompare);
-            }
-            else
-                if (strcmp(algorithm, "shaker-sort") == 0)
-                {
-                    measureShakerSort(a, n, countCompare);
-                }
-                else
-                    if (strcmp(algorithm, "shell-sort") == 0)
-                    {
-                        measureShellSort(a, n, countCompare);
-                    }
-                    else
-                        if (strcmp(algorithm, "heap-sort") == 0)
-                        {
-                            measureHeapSort(a, n, countCompare);
-                        }
-                        else
-                            if (strcmp(algorithm, "merge-sort") == 0)
-                            {
-                                measureMergeSort(a, n, countCompare);
-                            }
-                            else
-                                if (strcmp(algorithm, "quick-sort") == 0)
-                                {
-                                    measureQuickSort(a, n, countCompare);
-                                }
-                                else
-                                    if (strcmp(algorithm, "counting-sort") == 0)
-                                    {
-                                        measureCountingSort(a, n, countCompare);
-                                    }
-                                    else
-                                        if (strcmp(algorithm, "radix-sort") == 0)
-                                        {
-                                            measureRadixSort(a, n, countCompare);
-                                        }
-                                        else//flash sort
-                                        {
-                                            measureFlashSort(a, n, countCompare);
-                                        }
+    else if (strcmp(algorithm, "insertion-sort") == 0)
+    {
+        measureInsertionSort(a, n, countCompare);
+    }
+    else if (strcmp(algorithm, "bubble-sort") == 0)
+    {
+        measureBubbleSort(a, n, countCompare);
+    }
+    else if (strcmp(algorithm, "shaker-sort") == 0)
+    {
+        measureShakerSort(a, n, countCompare);
+    }
+    else if (strcmp(algorithm, "shell-sort") == 0)
+    {
+        measureShellSort(a, n, countCompare);
+    }
+    else if (strcmp(algorithm, "heap-sort") == 0)
+    {
+        measureHeapSort(a, n, countCompare);
+    }
+    else if (strcmp(algorithm, "merge-sort") == 0)
+    {
+        measureMergeSort(a, n, countCompare);
+    }
+    else if (strcmp(algorithm, "quick-sort") == 0)
+    {
+        measureQuickSort(a, n, countCompare);
+    }
+    else if (strcmp(algorithm, "counting-sort") == 0)
+    {
+        measureCountingSort(a, n, countCompare);
+    }
+    else if (strcmp(algorithm, "radix-sort") == 0)
+    {
+        measureRadixSort(a, n, countCompare);
+    }
+    else // flash sort
+    {
+        measureFlashSort(a, n, countCompare);
+    }
 }
 
-void command4(char* algorithm1, char* algorithm2, char* input_file)
+void command4(char *algorithm1, char *algorithm2, char *input_file)
 {
-    //check algo
-    //cout<<algorithm1<<endl;
-    if (!checkValidAlgorithm(algorithm1)) return;
-    if (!checkValidAlgorithm(algorithm2)) return;
-    
+    // check algo
+    // cout<<algorithm1<<endl;
+    if (!checkValidAlgorithm(algorithm1))
+        return;
+    if (!checkValidAlgorithm(algorithm2))
+        return;
+
     int n;
     ifstream file;
     file.open(input_file);
@@ -206,9 +192,10 @@ void command4(char* algorithm1, char* algorithm2, char* input_file)
         return;
     }
     file >> n;
-    int* a;
+    int *a;
     a = new int[n];
-    for (int i = 0; i < n; i++)file >> a[i];
+    for (int i = 0; i < n; i++)
+        file >> a[i];
     file.close();
     //   for(int i=0;i<n;i++)cout<<a[i]<<" ";
 
@@ -226,6 +213,92 @@ void command4(char* algorithm1, char* algorithm2, char* input_file)
     cout << "-------------------------\n";
     cout << "Running time: " << fixed << setprecision(5) << time1 << " | " << time2 << endl;
     cout << "Comparisions: " << setprecision(0) << countCompare1 << " | " << countCompare2 << endl;
-    
-    delete[]a;
+
+    delete[] a;
+}
+
+// Command 5
+void printDataType(int type)
+{
+    switch (type)
+    {
+    case 0:
+    {
+        cout << "Randomize Data\n";
+        break;
+    }
+    case 1:
+    {
+        cout << "Nearly Sorted Data\n";
+        break;
+    }
+    case 2:
+    {
+        cout << "Sorted Data\n";
+        break;
+    }
+    case 3:
+    {
+        cout << "Reverse Sorted Data\n";
+        break;
+    }
+    default:
+        cout << "Invalid Data Type.\n";
+    }
+}
+
+void command5(char *algorithm1, char *algorithm2, char *input_size, char *input_order)
+{
+    if (!checkValidAlgorithm(algorithm1) || !checkValidAlgorithm(algorithm2))
+    {
+        cerr << "Error: Invalid sort algorithm." << endl;
+        return;
+    }
+
+    int n = stoi(input_size);
+    int dataType = -1;
+    dataType = convertDataType(input_order);
+
+    if (dataType < 0)
+    {
+        cerr << "Error: Invalid data type." << endl;
+        return;
+    }
+
+    int *array1 = new int[n];
+    int *array2 = new int[n];
+    generateData(n, array1, dataType);
+    copy(array1, array1 + n, array2); // copy array1 to array2
+
+    double time1 = -1, time2 = -1;
+    long long count_compare1 = 0, count_compare2 = 0;
+
+    int *temp1 = new int[n];
+    int *temp2 = new int[n];
+    copy(array1, array1 + n, temp1);
+    copy(array1, array1 + n, temp2);
+
+    // count comparisions
+    measureCount(algorithm1, array1, n, count_compare1);
+    measureCount(algorithm2, array2, n, count_compare2);
+
+    // run time
+    time1 = measureAlgorithm(algorithm1, temp1, n);
+    time2 = measureAlgorithm(algorithm2, temp2, n);
+
+    // PRINT DATA
+    cout << "COMPARE MODE" << endl;
+    cout << "Algorithm: " << algorithm1 << " | " << algorithm2 << endl;
+    cout << "Input size: " << n << endl;
+    cout << "Input order: ";
+    printDataType(dataType);
+    cout << "------------------------------------------------------\n";
+    cout << setprecision(9);
+    cout << "Running time: " << time1 << " | " << time2 << endl;
+    cout << "Comparisions: " << count_compare1 << " | " << count_compare2 << endl;
+
+    delete[] temp1;
+    delete[] temp2;
+    delete[] array1;
+    delete[] array2;
 }
