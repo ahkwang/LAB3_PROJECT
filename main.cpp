@@ -3,6 +3,7 @@
 //test main
 int main(int argc, char* argv[])
 {
+
     char algorithm1[] = "counting-sort";
     char algorithm2[] = "radix-sort";
     char hi[] = "input.txt";
@@ -11,5 +12,6 @@ int main(int argc, char* argv[])
     generateData(n, a, 1);
     outputData(hi, a, n);
     command4(algorithm1, algorithm2, hi);
+   
     return 0;
 }
