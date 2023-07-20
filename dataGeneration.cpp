@@ -65,18 +65,6 @@ void generateNearlySortedData(int n, int Arr[])
 	}
 }
 
-int convertDataType(char* inputOrder)
-{
-	if (strcmp(inputOrder, "-rand") == 0)
-		return 0;
-	if (strcmp(inputOrder, "-nsorted") == 0)
-		return 1;
-	if (strcmp(inputOrder, "-sorted") == 0)
-		return 2;
-	if (strcmp(inputOrder, "-rev") == 0)
-		return 3;
-	return 4;
-}
 void generateData(int n, int Arr[], int dataType)
 {
 	switch (dataType)
