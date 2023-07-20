@@ -3,6 +3,7 @@
 double measureAlgorithm(char* algorithm, int* a, int n);
 bool checkValidAlgorithm(char* algorithm);
 int convertDataType(char* inputOrder);
+int *copyArray(int *a,int n);
 int convertDataTypeOutputParam(char* outputParam);
 int checkFile(char* inputFile);
 void convertStringOrder(int dataType);

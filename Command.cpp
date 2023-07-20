@@ -316,6 +316,15 @@ void command2(char* algorithm, char* inputSize, char* order, char* outputPara)
     delete b;
 
 }
+
+int *copyArray(int *a,int n)
+{
+    int *tmp=new int[n];
+    for(int i=0;i<n;i++)tmp[i]=a[i];
+    return tmp;
+}
+
+
 void command4(char* algorithm1, char* algorithm2, char* input_file)
 {
     //check algo
@@ -343,11 +352,22 @@ void command4(char* algorithm1, char* algorithm2, char* input_file)
     //   for(int i=0;i<n;i++)cout<<a[i]<<" ";
 
     long long countCompare1, countCompare2;
-    measureCount(algorithm1, a, n, countCompare1);
-    measureCount(algorithm2, a, n, countCompare2);
-
-    double time1 = measureAlgorithm(algorithm1, a, n);
-    double time2 = measureAlgorithm(algorithm2, a, n);
+    int * tmp;
+    tmp =copyArray(a,n);
+    measureCount(algorithm1, tmp, n, countCompare1);
+    
+    delete [] tmp;
+    tmp=copyArray(a,n);
+    measureCount(algorithm2, tmp, n, countCompare2);
+    
+    delete [] tmp;
+    tmp=copyArray(a,n);
+    double time1 = measureAlgorithm(algorithm1, tmp, n);
+    delete [] tmp;
+    tmp=copyArray(a,n);
+    double time2 = measureAlgorithm(algorithm2, tmp, n);
+    delete [] tmp;
+    
 
     cout << "COMPARE MODE\n";
     cout << "Algorithm: " << algorithm1 << " | " << algorithm2 << endl;
@@ -356,6 +376,6 @@ void command4(char* algorithm1, char* algorithm2, char* input_file)
     cout << "-------------------------\n";
     cout << "Running time: " << fixed << setprecision(5) << time1 << " | " << time2 << endl;
     cout << "Comparisions: " << setprecision(0) << countCompare1 << " | " << countCompare2 << endl;
-    
-    delete[]a;
+
+    delete a;
 }
