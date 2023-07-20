@@ -32,3 +32,4 @@ void insertionSort(int* a, int n)
 		a[idx + 1] = key;
 	}
 }
+

@@ -3,6 +3,7 @@
 #include"Command.h"
 #include"Counter.h"
 #include"Sort.h"
+#include"dataGeneration.h"
 
 #include <iostream>
 #include <fstream>

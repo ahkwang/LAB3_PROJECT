@@ -11,6 +11,7 @@ void shakerSort(int* a, int n);
 void shellSort(int* a, int n);
 
 void heapSort(int* a, int n);
+void createHeap(int a, int n, int pos);
 
 void mergeSort(int* a, int n); 
 
