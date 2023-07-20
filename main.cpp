@@ -8,8 +8,8 @@ int main(int argc, char* argv[])
     char hi[] = "input.txt";
     int n = 10000;
     int* a = new int[n];
-    generateRandomData(n,a);
-    outputData(hi, a, n);
+    //generateRandomData(n,a);
+    //outputData(hi, a, n);
     cout<<"HHI";
     command4(algorithm1, algorithm2, hi);
     cout<<endl<<"hihi";

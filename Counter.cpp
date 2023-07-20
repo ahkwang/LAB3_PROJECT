@@ -88,7 +88,8 @@ void measureMergeSort(int *a,int n , long long &countCompare)
 void countMergeArray(int *a,int l,int r,int mid, long long &countCompare)
 {
     int t1=mid-l+1,t2=r-mid;
-    int left_array[t1],right_array[t2];
+	int *left_array =new int[t1];
+	int *right_array=new int [t2];
 
     for(int i=l; ++countCompare , i<=mid;i++)left_array[i-l]=a[i];
     for(int i=mid+1;++countCompare, i<=r;i++)right_array[i-mid-1]=a[i];
@@ -105,6 +106,8 @@ void countMergeArray(int *a,int l,int r,int mid, long long &countCompare)
     }
     while(++countCompare && count1<t1)a[tmp++]=left_array[count1++];
     while(++countCompare && count2<t2)a[tmp++]=right_array[count2++];
+	delete [] left_array;
+	delete [] right_array;
 }
 void countStartMergeSort(int *a, int l, int r, long long &countCompare)
 {
@@ -152,7 +155,8 @@ int digit2(int x,int k, long long &countCompare)
 }
 void countCountingSortForBase_k(int *a,int n,int k,long long &countCompare)
 {
-    int f[10],b[n];
+    int f[10];
+	int *b=new int [n];
     for(int i=0;++countCompare,i<10;i++) f[i]=0;
     for(int i=0;++countCompare,i<n;i++) f[digit2(a[i],k,countCompare)]++;
     for(int i=1;++countCompare,i<10;i++)f[i]+=f[i-1];
@@ -164,7 +168,7 @@ void countCountingSortForBase_k(int *a,int n,int k,long long &countCompare)
     }
 
     for(int i=0;++countCompare,i<n;i++)a[i]=b[i];
-
+	delete [] b;
 }
 
 

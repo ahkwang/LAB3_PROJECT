@@ -189,53 +189,50 @@ void command4(char* algorithm1, char* algorithm2, char* input_file)
 {
     //check algo
     //cout<<algorithm1<<endl;
-    if(!checkValidAlgorithm(algorithm1))return ;
-    if(!checkValidAlgorithm(algorithm2))return;
+    if (!checkValidAlgorithm(algorithm1)) return;
+    if (!checkValidAlgorithm(algorithm2)) return;
     
     int n;
     ifstream file;
     file.open(input_file);
+
     if (!file.is_open())
     {
-    cout << "Khong mo duoc file!\n";
-    return ;
+        cout << "Cannot open file!\n";
+        return;
     }
-    file>>n;
-    int *a;
-    a=new int[n];
-    for(int i=0;i<n;i++)file>>a[i];
+    file >> n;
+    int* a;
+    a = new int[n];
+    for (int i = 0; i < n; i++)file >> a[i];
     file.close();
+    //   for(int i=0;i<n;i++)cout<<a[i]<<" ";
 
+    long long countCompare1, countCompare2;
+    int * tmp;
+    tmp =copyArray(a,n);
+    measureCount(algorithm1, tmp, n, countCompare1);
     
-
-    long long count_compare1,count_compare2;
-    int *tmp=copyArray(a,n);
-
-   
-    measureCount(algorithm1,tmp,n,count_compare1);
-   
+    delete [] tmp;
+    tmp=copyArray(a,n);
+    measureCount(algorithm2, tmp, n, countCompare2);
+    cout<<"here";
+    delete [] tmp;
+    tmp=copyArray(a,n);
+    double time1 = measureAlgorithm(algorithm1, tmp, n);
+    delete [] tmp;
+    tmp=copyArray(a,n);
+    double time2 = measureAlgorithm(algorithm2, tmp, n);
     delete [] tmp;
     
-    tmp=copyArray(a,n);
-    
-    measureCount(algorithm2,tmp,n,count_compare2);
-    delete [] tmp;
-    cout<<endl<<"here"<<endl;
-    tmp=copyArray(a,n);
-    double time1=measureAlgorithm(algorithm1,tmp,n);
-    delete []tmp;
-    tmp=copyArray(a,n);
-    double time2=measureAlgorithm(algorithm2,tmp,n);
-    delete []tmp;
-    
-    cout<<"COMPARE MODE\n";
-    cout<<"Algorithm: "<<algorithm1<<" | "<<algorithm2<<endl;
-    cout<<"Input file: "<<input_file<<endl;
-    cout<<"Input size: "<<n<<endl;
-    cout<<"-------------------------\n";
-    cout<<"Running time: "<<fixed<<setprecision(5)<<time1<<" | "<<time2<<endl;
-    cout<<"Comparisions: "<<setprecision(0)<<count_compare1<<" | "<<count_compare2<<endl;
 
-
+    cout << "COMPARE MODE\n";
+    cout << "Algorithm: " << algorithm1 << " | " << algorithm2 << endl;
+    cout << "Input file: " << input_file << endl;
+    cout << "Input size: " << n << endl;
+    cout << "-------------------------\n";
+    cout << "Running time: " << fixed << setprecision(5) << time1 << " | " << time2 << endl;
+    cout << "Comparisions: " << setprecision(0) << countCompare1 << " | " << countCompare2 << endl;
+  //  for (int i = 0; i < n; i++)cout << a[i] << " ";
     delete []a;
 }
