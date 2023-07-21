@@ -19,6 +19,7 @@ void startMergeSort(int *a, int l, int r);
 
 
 void quickSort(int* a, int n);
+void quickSort_function(int* a, int left, int right);
 
 void countingSort(int* a, int n);
 

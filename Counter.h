@@ -21,6 +21,7 @@ void countStartMergeSort(int *a, int l, int r, long long &countCompare);
 
 
 void  measureQuickSort(int* a, int n, long long& countCompare);
+void measureQuickSort_function(int* a, int left, int right, long long& countCompare);
 
 void  measureCountingSort(int* a, int n, long long& countCompare);
 

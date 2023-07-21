@@ -47,11 +47,6 @@ void bubbleSort(int* a, int n)
     }
 }
 
-void shakerSort(int* a, int n){}
-
-void shellSort(int* a, int n){}
-
-
 void heapSort(int *a,int n)
 {
      for(int i=n/2-1;i>=0;i--)
@@ -79,7 +74,6 @@ void createHeap(int *a,int n, int pos)
         createHeap(a,n,next);
     }
 }
-
 
 void mergeSort(int *a,int n)
 {
@@ -237,5 +231,172 @@ void countingSortForBase_k(int *a,int n,int k)
 
 }
 
-void flashSort(int* a, int n){}
+void shakerSort(int* a, int n)
+{
+    bool swapped = true;
+    int start = 0;
+    int end = n - 1;
+
+    while (swapped)
+    {
+        swapped = false;
+
+        for (int i = start; i < end; ++i)
+        {
+            if (a[i] > a[i + 1])
+            {
+                swap(a[i], a[i + 1]);
+                swapped = true;
+            }
+        }
+
+        if (!swapped)
+            break;
+
+        swapped = false;
+        --end;
+
+        for (int i = end - 1; i >= start; --i)
+        {
+            if (a[i] > a[i + 1])
+            {
+                swap(a[i], a[i + 1]);
+                swapped = true;
+            }
+        }
+
+        ++start;
+    }
+}
+
+void shellSort(int* a, int n)
+{
+    for (int gap = n / 2; gap > 0; gap /= 2)
+    {
+        for (int i = gap; i < n; i += 1)
+        {
+            int temp = a[i];
+            int j;
+            for (j = i; j >= gap && a[j - gap] > temp; j -= gap)
+                a[j] = a[j - gap];
+
+            a[j] = temp;
+        }
+    }
+}
+void flashSort(int* a, int n)
+{
+    int i = 0, j = n - 1;
+    int m = (int)(0.45 * n);
+    int min, max, maxIndex;
+    min = max = a[0];
+    maxIndex = 0;
+
+    for (i = 1; i < n - 1; i += 2)
+    {
+        int small;
+        int big;
+        int bigIndex;
+
+        if (a[i] < a[i + 1])
+        {
+            small = a[i];
+            big = a[i + 1];
+            bigIndex = i + 1;
+        }
+        else
+        {
+            big = a[i];
+            bigIndex = i;
+            small = a[i + 1];
+        }
+
+        if (big > max)
+        {
+            max = big;
+            maxIndex = bigIndex;
+        }
+
+        if (small < min)
+        {
+            min = small;
+        }
+    }
+
+    if (a[n - 1] < min)
+    {
+        min = a[n - 1];
+    }
+    else if (a[n - 1] > max)
+    {
+        max = a[n - 1];
+        maxIndex = n - 1;
+    }
+
+    if (max == min)
+    {
+        return;
+    }
+
+    double c1 = (m - 1.0) / (max - min);
+    int* l = new int[m];
+    int k;
+
+    for (k = 0; k < m; k++)
+    {
+        l[k] = 0;
+    }
+    for (j = 0; j < n; j++)
+    {
+        k = (int)(c1 * (a[j] - min));
+        l[k] += 1;
+    }
+
+    for (k = 1; k < m; k++)
+    {
+        l[k] += l[k - 1];
+    }
+
+    int hold = a[maxIndex];
+    a[maxIndex] = a[0];
+    a[0] = hold;
+
+    // permutation
+    int move = 0, t, flash;
+    j = 0;
+    k = m - 1;
+
+    while (move < n - 1)
+    {
+        while (j > l[k] - 1)
+        {
+            j++;
+            k = (int)(c1 * (a[j] - min));
+        }
+        flash = a[j];
+
+        while (!(j == l[k]))
+        {
+            k = (int)(c1 * (flash - min));
+            hold = a[t = l[k] -= 1];
+            a[t] = flash;
+            flash = hold;
+            move++;
+        }
+    }
+
+    // insertion
+    for (j = 1; j < n; j++)
+    {
+        hold = a[j];
+        i = j - 1;
+        while (i >= 0 && a[i] > hold)
+        {
+            a[i + 1] = a[i--];
+        }
+        a[i + 1] = hold;
+    }
+    delete[] l;
+}
+
 
