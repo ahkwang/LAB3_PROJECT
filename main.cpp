@@ -12,11 +12,12 @@ int main(int argc, char** argv)
 			{
 				if(argv[3][i]=='.')
 				{
+			
 					if(argv[3][i+1]>='a'&&argv[3][i+1]<='z')check=true;
 					if(argv[3][i+1]>='A'&&argv[3][i+1]<='Z')check=true;
 				}
 			}
-			if(check==true){command3(argv[2],argv[3],argv[4]);}
+			if(!check){command3(argv[2],argv[3],argv[4]);}
 			else {command1(argv[2],argv[3],argv[4]);}
 		}
 	}
