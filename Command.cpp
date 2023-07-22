@@ -78,7 +78,8 @@ double measureAlgorithm(char* algorithm, int* a, int n)
 											flashSort(a, n);
 											t2 = clock();
 										}
-	return 1.0 * double(t2 - t1) / double(CLOCKS_PER_SEC);
+	return 1000.0 * double(t2 - t1) / double(CLOCKS_PER_SEC);
+	//return in miliseconds
 }
 
 bool checkValidAlgorithm(char* algorithm)
@@ -374,7 +375,7 @@ void command4(char* algorithm1, char* algorithm2, char* input_file)
 	cout << "Input file: " << input_file << endl;
 	cout << "Input size: " << n << endl;
 	cout << "-------------------------\n";
-	cout << "Running time: " << fixed << setprecision(5) << time1 << " | " << time2 << endl;
+	cout << "Running time: " << fixed << setprecision(5) << time1 << " ms | " << time2 <<" ms"<< endl;
 	cout << "Comparisions: " << setprecision(0) << countCompare1 << " | " << countCompare2 << endl;
 
 	delete a;
@@ -421,7 +422,7 @@ void command3(char* algorithm, char* input_size, char* output_param)
 		if (parameter_type == 0 || parameter_type == 2)
 		{
 			double res = measureAlgorithm(algorithm, a, n);
-			cout << "Running time: " << res << endl;
+			cout << "Running time: " << res <<" ms"<< endl;
 		}
 		if (parameter_type == 1 || parameter_type == 2)
 		{
@@ -510,9 +511,9 @@ void command5(char* algorithm1, char* algorithm2, char* input_size, char* input_
 	cout << "Input size: " << n << endl;
 	cout << "Input order: ";
 	convertStringOrder(dataType);
-	cout << "------------------------------------------------------\n";
+	cout << "\n------------------------------------------------------\n";
 	cout << setprecision(9);
-	cout << "Running time: " << time1 << " | " << time2 << endl;
+	cout << "Running time: " << time1 << " ms | " << time2<<" ms"<< endl;
 	cout << "Comparisions: " << count_compare1 << " | " << count_compare2 << endl;
 
 	delete[] temp1;
