@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 double measureAlgorithm(char* algorithm, int* a, int n);
 bool checkValidAlgorithm(char* algorithm);
@@ -8,6 +9,7 @@ int *copyArray(int *a,int n);
 int checkFile(char* inputFile);
 void convertStringOrder(int dataType);
 void writeFile(char* fileName, char* name_order, int* a, int n);
+void copyArr(int*& dest, int* source, int n);
 
 void measureCount(char* algorithm, int* a, int n, long long& countCompare);
 

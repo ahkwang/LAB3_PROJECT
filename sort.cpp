@@ -183,6 +183,9 @@ void countingSort(int* a, int n)
 	}
 	for (int i = 0; i < n; i++)
 		a[i] = sortedArr[i];
+
+    delete[] countArr;
+    delete[] sortedArr;
 }
 
 void radixSort(int *a, int n)
