@@ -2,12 +2,12 @@
 
 int main(int argc, char** argv)
 {
-    std::string sorts[] = { "selection-sort", "insertion-sort", "bubble-sort", "shaker-sort", "shell-sort", "heap-sort", "merge-sort", /*"quick-sort",*/ "counting-sort", "radix-sort", "flash-sort" };
-    std::string orders[] = { "-rand", "-nsorted", "-sorted", "-rev" };
-    std::string para = "-both";
-    int inputSizes[] = { 10000, 30000};
+    string sorts[] = { "selection-sort", "insertion-sort", "bubble-sort", "shaker-sort", "shell-sort", "heap-sort", "merge-sort", /*"quick-sort",*/ "counting-sort", "radix-sort", "flash-sort" };
+    string orders[] = { "-rand", "-nsorted", "-sorted", "-rev" };
+    string para = "-both";
+    int inputSizes[] = { 10000, 30000, 50000, 100000, 300000, 500000};
 
-    std::ofstream fs("input.txt");
+    ofstream fs("input.txt");
     if (!fs)
     {
         std::cerr << "Failed to open input.txt" << std::endl;
