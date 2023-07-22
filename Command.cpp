@@ -511,7 +511,7 @@ void command5(char* algorithm1, char* algorithm2, char* input_size, char* input_
 	cout << "Input size: " << n << endl;
 	cout << "Input order: ";
 	convertStringOrder(dataType);
-	cout << "------------------------------------------------------\n";
+	cout << "\n------------------------------------------------------\n";
 	cout << setprecision(9);
 	cout << "Running time: " << time1 << " ms | " << time2<<" ms"<< endl;
 	cout << "Comparisions: " << count_compare1 << " | " << count_compare2 << endl;
