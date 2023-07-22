@@ -131,6 +131,7 @@
     <ClInclude Include="Counter.h" />
     <ClInclude Include="dataGeneration.h" />
     <ClInclude Include="mainHeader.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Sort.h" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +143,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LAB3_PROJECT.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
