@@ -1,4 +1,4 @@
-#include"mainHeader.h"
+﻿#include"mainHeader.h"
 
 void selectionSort(int* a, int n)
 {
@@ -133,7 +133,7 @@ void quickSort_function(int* a, int left, int right)
         do {
             do {
                 i++;
-            } while (a[i] < pivot);
+            } while (i <= right && a[i] < pivot);// tránh trường hợp xét các phần tử ngoài mảng
             do {
                 j--;
             } while (a[j] > pivot);
@@ -141,9 +141,13 @@ void quickSort_function(int* a, int left, int right)
         } while (i < j);
         swap(a[i], a[j]);
         swap(a[left], a[j]);
-        //
-        quickSort_function(a, left, j - 1);
-        quickSort_function(a, j + 1, right);
+        // giải quyết mảng nhỏ trước, tránh gây tràn bộ nhớ đệm 
+        if (j - left <= right - j) {
+            quickSort_function(a, left, j - 1);
+        }
+        else {
+            quickSort_function(a, j + 1, right);
+        }
     }
 }
 

@@ -1,4 +1,4 @@
-#include "mainHeader.h"
+﻿#include "mainHeader.h"
 
 void  measureSelectionSort(int* a, int n, long long & countCompare)
 {
@@ -129,7 +129,11 @@ void  measureQuickSort(int* a, int n, long long& countCompare)
     measureQuickSort_function(a, 0, n - 1, countCompare);
 }
 
-void measureQuickSort_function(int* a, int left, int right,long long& countCompare)
+void  measureQuickSort(int* a, int n, long long& countCompare)
+{
+    measureQuickSort_function(a, 0, n - 1, countCompare);
+}
+void measureQuickSort_function(int* a, int left, int right, long long& countCompare)
 {
     if (++countCompare && left < right)
     {
@@ -139,7 +143,7 @@ void measureQuickSort_function(int* a, int left, int right,long long& countCompa
         do {
             do {
                 i++;
-            } while (++countCompare && a[i] < pivot);
+            } while (++countCompare && i <= right && ++countCompare && a[i] < pivot);// tránh trường hợp xét phần tử bên ngoài
             do {
                 j--;
             } while (++countCompare && a[j] > pivot);
@@ -149,10 +153,15 @@ void measureQuickSort_function(int* a, int left, int right,long long& countCompa
         swap(a[i], a[j]);
         swap(a[left], a[j]);
         //
-        measureQuickSort_function(a, left, j - 1, countCompare);
-        measureQuickSort_function(a, j + 1, right, countCompare);
+        if (++countCompare && j - left <= right - j) {
+            measureQuickSort_function(a, left, j - 1, countCompare);
+        }
+        else {
+            measureQuickSort_function(a, j + 1, right, countCompare);
+        }
     }
 }
+
 
 void  measureCountingSort(int* a, int n, long long& countCompare)
 {
