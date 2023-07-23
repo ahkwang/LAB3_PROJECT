@@ -128,11 +128,6 @@ void  measureQuickSort(int* a, int n, long long& countCompare)
 {
     measureQuickSort_function(a, 0, n - 1, countCompare);
 }
-
-void  measureQuickSort(int* a, int n, long long& countCompare)
-{
-    measureQuickSort_function(a, 0, n - 1, countCompare);
-}
 void measureQuickSort_function(int* a, int left, int right, long long& countCompare)
 {
     if (++countCompare && left < right)
