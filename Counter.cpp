@@ -42,12 +42,19 @@ void  measureBubbleSort(int* a, int n, long long& countCompare)
 {
     for (int i = 1; (++countCompare, i < n); i++)
     {
+        bool check = false;
         for (int j = n - 1; (++countCompare, j >= i); j--)
         {
             if (++countCompare && a[j] < a[j - 1])
             {
                 swap(a[j], a[j - 1]);
+                check = true;
             }
+        }
+
+        if (++countCompare, check == false)
+        {
+            break;
         }
     }
 }
