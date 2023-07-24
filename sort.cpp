@@ -59,7 +59,7 @@ void heapSort(int *a,int n)
     {
         createHeap(a,n,i);
     }
-    //for(int i=n-1;i>=0;i--) not good
+
     for(int i=n-1;i>0;i--)
     {
         swap(a[0],a[i]);
@@ -139,7 +139,7 @@ void quickSort_function(int* a, int left, int right)
         do {
             do {
                 i++;
-            } while (i <= right && a[i] < pivot);// tránh trường hợp xét các phần tử ngoài mảng
+            } while (i <= right && a[i] < pivot);
             do {
                 j--;
             } while (a[j] > pivot);
@@ -147,7 +147,6 @@ void quickSort_function(int* a, int left, int right)
         } while (i < j);
         swap(a[i], a[j]);
         swap(a[left], a[j]);
-        // giải quyết mảng nhỏ trước, tránh gây tràn bộ nhớ đệm 
         if (j - left <= right - j) {
             quickSort_function(a, left, j - 1);
         }

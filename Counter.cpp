@@ -38,7 +38,7 @@ void  measureInsertionSort(int* a, int n, long long & countCompare)
 	}
 }
 
-void  measureBubbleSort(int* a, int n, long long& countCompare)
+void measureBubbleSort(int* a, int n, long long& countCompare)
 {
     for (int i = 1; (++countCompare, i < n); i++)
     {
