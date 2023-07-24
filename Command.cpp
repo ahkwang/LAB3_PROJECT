@@ -384,7 +384,7 @@ void command4(char* algorithm1, char* algorithm2, char* input_file)
 	cout << "Running time: " << fixed << setprecision(5) << time1 << " ms | " << time2 <<" ms"<< endl;
 	cout << "Comparisions: " << setprecision(0) << countCompare1 << " | " << countCompare2 << endl;
 
-	delete a;
+	delete []a;
 }
 //////////
 void command3(char* algorithm, char* input_size, char* output_param)
@@ -414,11 +414,11 @@ void command3(char* algorithm, char* input_size, char* output_param)
 	{
 		char* fileName = new char[12];
 		strcpy(fileName, "input_0.txt");
-		fileName[7] = i + 1 + 48;//thay đổi tên file
+		fileName[6] = i + 1 + 48;//thay đổi tên file
 		writeFile(fileName, name_order[i], a, n);// hàm vừa tạo ra dữ liệu và ghi dữ liệu vào file
 		// tạo 1 mảng phụ b để có thể thực hiện 2 lần phép đo
 		int* b = new int[n];
-		for (int j = 0; j < n; i++)
+		for (int j = 0; j < n; j++)
 		{
 			b[j] = a[j];
 		}
