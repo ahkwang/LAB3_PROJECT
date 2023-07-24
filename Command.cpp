@@ -249,8 +249,11 @@ void command1(char* algorithm, char* inputFile, char* outputPara)
 		cout << "\nComparisions: " << countCompare;
 	}
 
-	delete a;
-	delete b;
+	const char* output = "output.txt";
+	outputData(output, a, n);
+
+	delete[] a;
+	delete[] b;
 }
 
 void convertStringOrder(int dataType)
@@ -313,8 +316,11 @@ void command2(char* algorithm, char* inputSize, char* order, char* outputPara)
 		cout << "\nComparisions: " << countCompare;
 	}
 
-	delete a;
-	delete b;
+	const char* output = "output.txt";
+	outputData(output, a, n);
+
+	delete[] a;
+	delete[] b;
 
 }
 
@@ -412,9 +418,9 @@ void command3(char* algorithm, char* input_size, char* output_param)
 		writeFile(fileName, name_order[i], a, n);// hàm vừa tạo ra dữ liệu và ghi dữ liệu vào file
 		// tạo 1 mảng phụ b để có thể thực hiện 2 lần phép đo
 		int* b = new int[n];
-		for (int i = 0; i < n; i++)
+		for (int j = 0; j < n; i++)
 		{
-			b[i] = a[i];
+			b[j] = a[j];
 		}
 
 		cout << "\nInput order: " << name_order[i];

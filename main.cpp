@@ -2,8 +2,7 @@
 
 int main(int argc, char** argv)
 {
-<<<<<<<<< Temporary merge branch 1
-	if(argc==5)
+	/*if(argc==5)
 	{	
 		if(!strcmp(argv[1],"-c")){command4(argv[2],argv[3],argv[4]);}
 		else
@@ -32,10 +31,10 @@ int main(int argc, char** argv)
 	{
 		cout<<"Not a command\n";
 	}
-	return 0;
-=========
-    string sorts[] = { "selection-sort", "insertion-sort", "bubble-sort", "shaker-sort", "shell-sort", "heap-sort", "merge-sort", /*"quick-sort",*/ "counting-sort", "radix-sort", "flash-sort" };
-    string orders[] = { "-rand", "-nsorted", "-sorted", "-rev" };
+	return 0;*/
+
+    string sorts[] = { "selection-sort", "insertion-sort", "bubble-sort", "shaker-sort", "shell-sort", "heap-sort", "merge-sort", "quick-sort", "counting-sort", "radix-sort", "flash-sort" };
+    string orders[] = { /*"-rand", "-nsorted", "-sorted", */"-rev" };
     string para = "-both";
     int inputSizes[] = { 10000, 30000, 50000, 100000, 300000, 500000};
 
@@ -52,7 +51,7 @@ int main(int argc, char** argv)
         {
             for (int inputSize : inputSizes)
             {
-                for (int i = 0; i < 10; i++)
+                for (int i = 7; i < 8; i++)
                 {
                     int* a = new int[inputSize];
                     char* s = new char[order.length() + 1];
@@ -79,5 +78,4 @@ int main(int argc, char** argv)
     fs.close();
 
     return 0;
->>>>>>>>> Temporary merge branch 2
 }

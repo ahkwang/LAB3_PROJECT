@@ -1,1 +1,0 @@
-Sort, Order, InputSize, Time(ms), Comparisons

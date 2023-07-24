@@ -24,7 +24,7 @@ void insertionSort(int* a, int n)
 		int key = a[i];
 		int idx = i - 1;
 
-		while (++ a[idx] > key && idx >= 0)
+		while (a[idx] > key && idx >= 0)
 		{
 			a[idx + 1] = a[idx--];
 		}
