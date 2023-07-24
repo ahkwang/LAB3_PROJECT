@@ -1,4 +1,4 @@
-#include "mainHeader.h"
+﻿#include "mainHeader.h"
 
 int main(int argc, char* argv[])
 {
@@ -6,7 +6,15 @@ int main(int argc, char* argv[])
     {
         if (argc == 5)
         {
-            if (argv[3][0] >=0 && argv[3][0]<=9)
+            bool check_number = true;
+            for (int i = 0; i < strlen(argv[3]); i++)
+            {
+                if (argv[3][i] < '0' && argv[3][i] > '9')// nếu không toàn số thì false
+                {
+                    check_number = false;
+                }
+            }
+            if (!check_number)
             {
                 command3(argv[2], argv[3], argv[4]);
             }
