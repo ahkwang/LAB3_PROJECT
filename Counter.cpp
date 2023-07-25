@@ -157,9 +157,11 @@ void measureQuickSort_function(int* a, int left, int right, long long& countComp
         //
         if (++countCompare && j - left <= right - j) {
             measureQuickSort_function(a, left, j - 1, countCompare);
+            measureQuickSort_function(a, j + 1, right, countCompare);
         }
         else {
             measureQuickSort_function(a, j + 1, right, countCompare);
+            measureQuickSort_function(a, left, j - 1, countCompare);
         }
     }
 }
