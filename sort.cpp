@@ -155,9 +155,9 @@ void quickSort_function(int* a, int left, int right)
             j--;
         }
     }
-    if (left < j)
+    //if (left < j)
         quickSort_function(a, left, j);
-    if (right > i)
+    //if (right > i)
         quickSort_function(a, i, right);
 }
 

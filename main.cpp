@@ -23,7 +23,7 @@ int main(int argc, char** argv)
         {
             for (int inputSize : inputSizes)
             {
-                for (int i = 7; i < 8; i++)
+                for (int i = 0; i < 11; i++)
                 {
                     int* a = new int[inputSize];
 
