@@ -130,40 +130,41 @@ void countStartMergeSort(int *a, int l, int r, long long &countCompare)
     countStartMergeSort(a,mid+1,r,countCompare);
     countMergeArray(a,l,r,mid,countCompare);
 }
-
+void swap1(int& a, int& b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
+}
 void  measureQuickSort(int* a, int n, long long& countCompare)
 {
     measureQuickSort_function(a, 0, n - 1, countCompare);
 }
 void measureQuickSort_function(int* a, int left, int right, long long& countCompare)
 {
-    if (++countCompare && left < right)
-    {
-        int pivot = a[left];
-        int i = left;
-        int j = right + 1;
-        do {
-            do {
-                i++;
-            } while (++countCompare && i <= right && ++countCompare && a[i] < pivot);// tránh trường hợp xét phần tử bên ngoài
-            do {
-                j--;
-            } while (++countCompare && a[j] > pivot);
-            swap(a[i], a[j]);
-        } while (++countCompare && i < j);
+    int middle = left + (right - left) / 2;
+    int pivot = a[middle];
+    int i = left, j = right;
 
-        swap(a[i], a[j]);
-        swap(a[left], a[j]);
-        //
-        if (++countCompare && j - left <= right - j) {
-            measureQuickSort_function(a, left, j - 1, countCompare);
-            measureQuickSort_function(a, j + 1, right, countCompare);
+    while (++countCompare && i <= j) {
+        while (++countCompare && a[i] < pivot) {
+            i++;
         }
-        else {
-            measureQuickSort_function(a, j + 1, right, countCompare);
-            measureQuickSort_function(a, left, j - 1, countCompare);
+        while (++countCompare && a[j] > pivot) {
+            j--;
+        }
+        if (++countCompare && i <= j) {
+            int temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+            i++;
+            j--;
         }
     }
+    if (++countCompare&& left < j)
+        measureQuickSort_function(a, left, j,countCompare);
+    if (++countCompare&& right > i)
+        measureQuickSort_function(a, i, right,countCompare);
 }
 
 
