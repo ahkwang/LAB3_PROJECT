@@ -24,7 +24,7 @@ void insertionSort(int* a, int n)
 		int key = a[i];
 		int idx = i - 1;
 
-		while (++ a[idx] > key && idx >= 0)
+		while (a[idx] > key && idx >= 0)
 		{
 			a[idx + 1] = a[idx--];
 		}
@@ -37,12 +37,18 @@ void bubbleSort(int* a, int n)
 {
     for (int i = 1; i < n; i++)
     {
+        bool check = false;
         for (int j = n - 1; j >= i; j--)
         {
             if (a[j] < a[j - 1])
             {
                 swap(a[j], a[j - 1]);
+                check = true;
             }
+        }
+        if (!check)
+        {
+            break;
         }
     }
 }
@@ -53,7 +59,7 @@ void heapSort(int *a,int n)
     {
         createHeap(a,n,i);
     }
-    //for(int i=n-1;i>=0;i--) not good
+
     for(int i=n-1;i>0;i--)
     {
         swap(a[0],a[i]);
@@ -118,33 +124,41 @@ void startMergeSort(int *a, int l, int r)
     mergeArray(a,l,r,mid);
 }
 
-
+void swap(int& a, int& b)
+{
+    int temp = a;
+    a = b;
+    b = a;
+}
 void quickSort(int* a, int n)
 {
     quickSort_function(a, 0, n - 1);
 }
 void quickSort_function(int* a, int left, int right)
 {
-    if (left < right)
-    {
-        int pivot = a[left];
-        int i = left;
-        int j = right + 1;
-        do {
-            do {
-                i++;
-            } while (a[i] < pivot);
-            do {
-                j--;
-            } while (a[j] > pivot);
-            swap(a[i], a[j]);
-        } while (i < j);
-        swap(a[i], a[j]);
-        swap(a[left], a[j]);
-        //
-        quickSort_function(a, left, j - 1);
-        quickSort_function(a, j + 1, right);
+    int middle = left + (right - left) / 2;
+    int pivot = a[middle];
+    int i = left, j = right;
+
+    while (i <= j) {
+        while (a[i] < pivot) {
+            i++;
+        }
+        while (a[j] > pivot) {
+            j--;
+        }
+        if (i <= j) {
+            int temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+            i++;
+            j--;
+        }
     }
+    if (left < j)
+        quickSort_function(a, left, j);
+    if (right > i)
+        quickSort_function(a, i, right);
 }
 
 void countingSort(int* a, int n)
@@ -183,6 +197,9 @@ void countingSort(int* a, int n)
 	}
 	for (int i = 0; i < n; i++)
 		a[i] = sortedArr[i];
+
+    delete[] countArr;
+    delete[] sortedArr;
 }
 
 void radixSort(int *a, int n)
@@ -398,5 +415,4 @@ void flashSort(int* a, int n)
     }
     delete[] l;
 }
-
 
