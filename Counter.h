@@ -19,7 +19,7 @@ void measureMergeSort(int *a,int n , long long &countCompare);
 void countMergeArray(int *a,int l,int r,int mid, long long &countCompare);
 void countStartMergeSort(int *a, int l, int r, long long &countCompare);
 
-
+void swap(int& a, int& b);
 void  measureQuickSort(int* a, int n, long long& countCompare);
 void measureQuickSort_function(int* a, int left, int right, long long& countCompare);
 

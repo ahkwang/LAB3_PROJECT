@@ -17,7 +17,7 @@ void mergeSort(int *a,int n);
 void mergeArray(int *a,int l,int r,int mid);
 void startMergeSort(int *a, int l, int r);
 
-
+void swap1(int& a, int& b);
 void quickSort(int* a, int n);
 void quickSort_function(int* a, int left, int right);
 

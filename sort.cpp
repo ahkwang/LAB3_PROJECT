@@ -124,36 +124,41 @@ void startMergeSort(int *a, int l, int r)
     mergeArray(a,l,r,mid);
 }
 
-
+void swap(int& a, int& b)
+{
+    int temp = a;
+    a = b;
+    b = a;
+}
 void quickSort(int* a, int n)
 {
     quickSort_function(a, 0, n - 1);
 }
 void quickSort_function(int* a, int left, int right)
 {
-    if (left < right)
-    {
-        int pivot = a[left];
-        int i = left;
-        int j = right + 1;
-        do {
-            do {
-                i++;
-            } while (i <= right && a[i] < pivot);
-            do {
-                j--;
-            } while (a[j] > pivot);
-            swap(a[i], a[j]);
-        } while (i < j);
-        swap(a[i], a[j]);
-        swap(a[left], a[j]);
-        if (j - left <= right - j) {
-            quickSort_function(a, left, j - 1);
+    int middle = left + (right - left) / 2;
+    int pivot = a[middle];
+    int i = left, j = right;
+
+    while (i <= j) {
+        while (a[i] < pivot) {
+            i++;
         }
-        else {
-            quickSort_function(a, j + 1, right);
+        while (a[j] > pivot) {
+            j--;
+        }
+        if (i <= j) {
+            int temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+            i++;
+            j--;
         }
     }
+    //if (left < j)
+        quickSort_function(a, left, j);
+    //if (right > i)
+        quickSort_function(a, i, right);
 }
 
 void countingSort(int* a, int n)
