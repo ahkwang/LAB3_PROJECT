@@ -381,7 +381,7 @@ void command4(char* algorithm1, char* algorithm2, char* input_file)
 	cout << "Input file: " << input_file << endl;
 	cout << "Input size: " << n << endl;
 	cout << "-------------------------\n";
-	cout << "Running time: " << fixed << setprecision(5) << time1 << " ms | " << time2 <<" ms"<< endl;
+	cout << "Running time: " << fixed << setprecision(5) << time1 << " ms | " << time2 << " ms" << endl;
 	cout << "Comparisions: " << setprecision(0) << countCompare1 << " | " << countCompare2 << endl;
 
 	delete a;
@@ -428,7 +428,7 @@ void command3(char* algorithm, char* input_size, char* output_param)
 		if (parameter_type == 0 || parameter_type == 2)
 		{
 			double res = measureAlgorithm(algorithm, a, n);
-			cout << "Running time: " << res <<" ms"<< endl;
+			cout << "Running time: " << res << " ms" << endl;
 		}
 		if (parameter_type == 1 || parameter_type == 2)
 		{
@@ -437,8 +437,9 @@ void command3(char* algorithm, char* input_size, char* output_param)
 			cout << "Comparisions: " << countCompare << endl;
 		}
 		delete[]fileName;
+		delete[]b;
 	}
-
+	delete[]a;
 }
 void writeFile(char* fileName, char* name_order, int* a, int n)
 {
@@ -519,7 +520,7 @@ void command5(char* algorithm1, char* algorithm2, char* input_size, char* input_
 	convertStringOrder(dataType);
 	cout << "\n------------------------------------------------------\n";
 	cout << setprecision(9);
-	cout << "Running time: " << time1 << " ms | " << time2<<" ms"<< endl;
+	cout << "Running time: " << time1 << " ms | " << time2 << " ms" << endl;
 	cout << "Comparisions: " << count_compare1 << " | " << count_compare2 << endl;
 
 	delete[] temp1;
