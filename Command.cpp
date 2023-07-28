@@ -290,6 +290,9 @@ void command2(char* algorithm, char* inputSize, char* order, char* outputPara)
 	long long countCompare = 0;
 	generateData(n, a, convertDataType(order));
 
+	const char* output1 = "input.txt";
+	outputData(output1, a, n);
+
 	copyArr(b, a, n);
 
 	cout << "ALGORITHM MODE";
@@ -330,7 +333,61 @@ int* copyArray(int* a, int n)
 	for (int i = 0; i < n; i++)tmp[i] = a[i];
 	return tmp;
 }
+void command3(char* algorithm, char* input_size, char* output_param)
+{
+	// if (!checkValidAlgorithm(algorithm)) return;
 
+	int n = atoi(input_size);
+	int* a = new int[n];
+	int parameter_type = convertDataTypeOutputParam(output_param);
+
+	char** name_order = new char* [4];
+	name_order[0] = new char[10];
+	strcpy(name_order[0], "Randomize");
+	name_order[1] = new char[14];
+	strcpy(name_order[1], "Nearly Sorted");
+	name_order[2] = new char[7];
+	strcpy(name_order[2], "Sorted");
+	name_order[3] = new char[9];
+	strcpy(name_order[3], "Reversed");
+
+	cout << "ALGORITHM MODE" << endl;
+	cout << "Algorithm: " << algorithm << endl;
+	cout << "Input size: " << n << endl;
+
+	for (int i = 0; i < 4; i++)
+	{
+		
+		char* fileName = new char[12];
+		strcpy(fileName, "input_0.txt");
+		fileName[6] = i + 1 + 48;
+		writeFile(fileName, name_order[i], a, n);
+		
+		int* b = new int[n];
+		for (int j = 0; j < n; j++)
+		{
+			b[j] = a[j];
+		}
+
+		cout << "\nInput order: " << name_order[i];
+		cout << "\n-------------------------\n";
+		if (parameter_type == 0 || parameter_type == 2)
+		{
+			double res = measureAlgorithm(algorithm, a, n);
+			cout << "Running time: " << res << " ms" << endl;
+		}
+		if (parameter_type == 1 || parameter_type == 2)
+		{
+			long long countCompare = 0;
+			measureCount(algorithm, b, n, countCompare);
+			cout << "Comparisions: " << countCompare << endl;
+		}
+		
+		delete[]fileName;
+		delete [] b;
+	}
+	delete [] a;
+}
 
 void command4(char* algorithm1, char* algorithm2, char* input_file)
 {
@@ -386,61 +443,7 @@ void command4(char* algorithm1, char* algorithm2, char* input_file)
 
 	delete a;
 }
-//////////
-void command3(char* algorithm, char* input_size, char* output_param)
-{
-	if (!checkValidAlgorithm(algorithm)) return;
 
-	int n = atoi(input_size);
-	int* a = new int[n];
-	int parameter_type = convertDataTypeOutputParam(output_param);
-
-	// tạo mảng chứa tên kiểu dữ liệu
-	char** name_order = new char* [4];
-	name_order[0] = new char[10];
-	strcpy(name_order[0], "Randomize");
-	name_order[1] = new char[14];
-	strcpy(name_order[1], "Nearly Sorted");
-	name_order[2] = new char[7];
-	strcpy(name_order[2], "Sorted");
-	name_order[3] = new char[9];
-	strcpy(name_order[3], "Reversed");
-
-	cout << "ALGORITHM MODE" << endl;
-	cout << "Algorithm: " << algorithm << endl;
-	cout << "Input size: " << n << endl;
-
-	for (int i = 0; i < 4; i++)
-	{
-		char* fileName = new char[12];
-		strcpy(fileName, "input_0.txt");
-		fileName[7] = i + 1 + 48;//thay đổi tên file
-		writeFile(fileName, name_order[i], a, n);// hàm vừa tạo ra dữ liệu và ghi dữ liệu vào file
-		// tạo 1 mảng phụ b để có thể thực hiện 2 lần phép đo
-		int* b = new int[n];
-		for (int j = 0; j < n; i++)
-		{
-			b[j] = a[j];
-		}
-
-		cout << "\nInput order: " << name_order[i];
-		cout << "\n-------------------------\n";
-		if (parameter_type == 0 || parameter_type == 2)
-		{
-			double res = measureAlgorithm(algorithm, a, n);
-			cout << "Running time: " << res << " ms" << endl;
-		}
-		if (parameter_type == 1 || parameter_type == 2)
-		{
-			long long countCompare = 0;
-			measureCount(algorithm, b, n, countCompare);
-			cout << "Comparisions: " << countCompare << endl;
-		}
-		delete[]fileName;
-		delete[]b;
-	}
-	delete[]a;
-}
 void writeFile(char* fileName, char* name_order, int* a, int n)
 {
 	fstream input;
@@ -471,6 +474,7 @@ void writeFile(char* fileName, char* name_order, int* a, int n)
 	{
 		input << a[i] << " ";
 	}
+	input.close();
 }
 
 void command5(char* algorithm1, char* algorithm2, char* input_size, char* input_order)
@@ -494,6 +498,10 @@ void command5(char* algorithm1, char* algorithm2, char* input_size, char* input_
 	int* array1 = new int[n];
 	int* array2 = new int[n];
 	generateData(n, array1, dataType);
+
+	const char* output = "input.txt";
+	outputData(output, array1, n);
+	
 	copy(array1, array1 + n, array2); // copy array1 to array2
 
 	double time1 = -1, time2 = -1;
